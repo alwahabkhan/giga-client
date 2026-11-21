@@ -23,7 +23,6 @@ function Home() {
   return (
     <div className="pb-safe-nav min-h-screen bg-background">
       <section className="relative h-[350px] overflow-hidden rounded-b-[40px] bg-[#0a223b]">
-        <div className="pointer-events-none absolute -right-6 -top-10 h-28 w-28 rounded-full border border-gold/80" />
         <div className="relative px-5 pt-[max(env(safe-area-inset-top),18px)]">
           <div className="flex items-center justify-between">
             <img src={logo} alt="Giga Group" className="-ml-2 h-[52px] w-[68px] object-cover object-center mix-blend-screen" />
