@@ -10,9 +10,9 @@ export const Route = createFileRoute("/welcome")({
 
 function Welcome() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#0a223b] text-white">
       <img src={hero} alt="Giga Mall at night" className="absolute inset-0 h-full w-full object-cover" width={1024} height={1536} />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/85" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-[#0a223b] via-[#0a223b]/80 to-transparent" />
 
       <div className="relative flex min-h-screen flex-col px-6 pb-[max(env(safe-area-inset-bottom),28px)] pt-[max(env(safe-area-inset-top),22px)]">
         <div className="flex flex-1 justify-center pt-2">

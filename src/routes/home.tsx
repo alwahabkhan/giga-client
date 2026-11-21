@@ -22,12 +22,11 @@ function Home() {
 
   return (
     <div className="pb-safe-nav min-h-screen bg-background">
-      <section className="relative h-[430px] overflow-hidden">
-        <img src={p.image} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-background" />
+      <section className="relative h-[350px] overflow-hidden rounded-b-[40px] bg-[#0a223b]">
+        <div className="pointer-events-none absolute -right-6 -top-10 h-28 w-28 rounded-full border border-gold/80" />
         <div className="relative px-5 pt-[max(env(safe-area-inset-top),18px)]">
           <div className="flex items-center justify-between">
-            <img src={logo} alt="Giga Group" className="-ml-3 h-[76px] w-[100px] object-cover object-center mix-blend-screen" />
+            <img src={logo} alt="Giga Group" className="-ml-2 h-[52px] w-[68px] object-cover object-center mix-blend-screen" />
             <div className="flex items-center gap-2">
               <BellButton light />
               <Link
@@ -39,11 +38,11 @@ function Home() {
               </Link>
             </div>
           </div>
-          <p className="mt-3 text-[13px] text-white/70">Welcome back</p>
+          <p className="mt-16 text-[13px] text-white/70">Welcome back</p>
           <h1 className="font-display text-[34px] font-semibold leading-none text-white">{profile.name.split(" ")[0]}</h1>
           <p className="mt-2 flex items-center gap-1.5 text-[13px] text-white/75">
-            <MapPin className="h-3.5 w-3.5 text-gold" />
-            {p.name} · {p.location}
+            <Wallet className="h-3.5 w-3.5 text-gold" />
+            {pkr(p.total)} invested · {pct}% paid
           </p>
         </div>
       </section>
@@ -108,23 +107,19 @@ function Home() {
         <SectionTitle action={<Link to="/projects" className="text-[12.5px] font-semibold text-gold-deep">View all</Link>}>
           Projects
         </SectionTitle>
-        <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-0 pb-1">
-          {projects.map((item) => (
-            <Link key={item.id} to="/projects/$id" params={{ id: item.id }} className="w-[88%] shrink-0 snap-start overflow-hidden rounded-2xl bg-card shadow-card">
-              <img src={item.image} alt={item.name} className="h-44 w-full object-cover" />
-              <div className="flex h-[76px] items-start justify-between gap-3 p-4">
-                <div className="min-w-0">
-                  <p className="truncate text-[15px] font-semibold text-primary">{item.name}</p>
-                  <p className="mt-0.5 flex items-center gap-1 text-[12px] text-muted-foreground">
-                    <MapPin className="h-3.5 w-3.5 shrink-0 text-gold-deep" />
-                    <span className="truncate">{item.location}</span>
-                  </p>
-                </div>
-                <p className="shrink-0 font-mono text-[11px] font-semibold text-gold-deep">{item.ref}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <Link to="/projects/$id" params={{ id: p.id }} className="block overflow-hidden rounded-2xl bg-card shadow-card">
+          <img src={p.image} alt={p.name} className="h-44 w-full object-cover" />
+          <div className="flex items-start justify-between gap-3 p-4">
+            <div className="min-w-0">
+              <p className="truncate text-[15px] font-semibold text-primary">{p.name}</p>
+              <p className="mt-0.5 flex items-center gap-1 text-[12px] text-muted-foreground">
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-gold-deep" />
+                <span className="truncate">{p.location}</span>
+              </p>
+            </div>
+            <p className="shrink-0 font-mono text-[11px] font-semibold text-gold-deep">{p.ref}</p>
+          </div>
+        </Link>
 
         <SectionTitle action={<Link to="/account" className="text-[12.5px] font-semibold text-gold-deep">Schedule</Link>}>
           Payment overview

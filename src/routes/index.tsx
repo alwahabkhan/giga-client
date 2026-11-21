@@ -24,33 +24,27 @@ function Splash() {
     >
       <img src={skyline} alt="" className="animate-giga-ken absolute inset-0 h-full w-full object-cover" />
       <img src={mall} alt="" className="animate-giga-cross absolute inset-0 h-full w-full object-cover opacity-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/50 to-black" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="animate-giga-sheen absolute inset-y-0 left-0 w-[46%]">
+          <div className="h-full w-full -skew-x-12 bg-gradient-to-r from-transparent via-gold/35 to-transparent blur-md" />
+        </div>
+      </div>
+      <div className="absolute inset-x-10 top-0 h-px origin-center animate-giga-line bg-gradient-to-r from-transparent via-gold/80 to-transparent" style={{ animationDelay: "0.35s" }} />
 
       <div className="relative flex flex-col items-center px-8">
-        <div className="relative w-[248px]">
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[344px] w-[344px] -translate-x-1/2 -translate-y-1/2">
-            <div className="animate-giga-ring relative h-full w-full">
-              <div className="animate-giga-pulse absolute inset-14 rounded-full bg-gold/20 blur-2xl" />
-              <svg viewBox="0 0 100 100" className="animate-giga-spin absolute inset-0 h-full w-full">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" className="text-gold/25" strokeWidth="0.4" />
-                <circle cx="50" cy="50" r="48" fill="none" className="text-gold" stroke="currentColor" strokeWidth="1.05" strokeLinecap="round" strokeDasharray="16 58" />
-              </svg>
-              <svg viewBox="0 0 100 100" className="animate-giga-spin-rev absolute inset-[14px] h-[calc(100%-28px)] w-[calc(100%-28px)]">
-                <circle cx="50" cy="50" r="47" fill="none" className="text-gold" stroke="currentColor" strokeWidth="0.85" strokeLinecap="round" strokeDasharray="11 40" />
-              </svg>
-            </div>
-          </div>
-          <img src={mallLogo} alt="Giga Mall" className="animate-giga-logo relative z-10 h-auto w-full object-contain mix-blend-screen" />
+        <div className="pointer-events-none absolute left-1/2 top-[28%] -translate-x-1/2 -translate-y-1/2">
+          <div className="animate-giga-bloom h-28 w-28 rounded-full bg-gold/40 blur-3xl" />
         </div>
-        <div className="animate-giga-line mt-[108px] h-px w-16 origin-center bg-gold" />
-        <p className="animate-giga-rise mt-4 max-w-[260px] text-center text-[13px] leading-relaxed text-white/75" style={{ animationDelay: "1.05s" }}>
+        <img src={mallLogo} alt="Giga Mall" className="animate-giga-logo relative z-10 h-auto w-[232px] object-contain mix-blend-screen" />
+        <div className="animate-giga-line mt-8 h-px w-14 origin-center bg-gold" style={{ animationDelay: "1.05s" }} />
+        <p className="animate-giga-rise mt-4 max-w-[250px] text-center text-[12.5px] leading-relaxed tracking-[0.045em] text-white/75" style={{ animationDelay: "1.2s" }}>
           Your Investment. Your Information. Complete Transparency.
         </p>
       </div>
 
-      <div className="absolute bottom-16 h-[3px] w-36 overflow-hidden rounded-full bg-white/15">
-        <div className="animate-giga-bar h-full w-1/2 rounded-full bg-gold" />
+      <div className="absolute bottom-[72px] h-px w-28 overflow-hidden bg-white/15">
+        <div className="animate-giga-load h-full w-full origin-left bg-gold" />
       </div>
     </button>
   );

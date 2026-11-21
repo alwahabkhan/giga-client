@@ -159,8 +159,8 @@
   to { opacity: 1; transform: none; filter: none; }
 }
 @keyframes giga-rise {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(12px); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: none; }
 }
 @keyframes giga-draw {
   from { stroke-dashoffset: 280; }
@@ -187,12 +187,22 @@
   55%, 100% { opacity: 1; }
 }
 @keyframes giga-logo {
-  from { opacity: 0; transform: scale(0.78); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateY(18px) scale(0.94); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: none; }
 }
-@keyframes giga-ring {
-  from { opacity: 0; transform: scale(0.62); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes giga-bloom {
+  0% { opacity: 0; transform: scale(0.55); }
+  45% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.45; transform: scale(1.12); }
+}
+@keyframes giga-sheen {
+  0% { opacity: 0; transform: translateX(-130%); }
+  18% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(340%); }
+}
+@keyframes giga-load {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @utility animate-giga-spin {
@@ -226,8 +236,14 @@
   animation: giga-cross 3.2s ease forwards;
 }
 @utility animate-giga-logo {
-  animation: giga-logo 1.05s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: giga-logo 1.25s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-@utility animate-giga-ring {
-  animation: giga-ring 1.15s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+@utility animate-giga-bloom {
+  animation: giga-bloom 2.2s 0.25s ease-out both;
+}
+@utility animate-giga-sheen {
+  animation: giga-sheen 1.55s 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@utility animate-giga-load {
+  animation: giga-load 3.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
