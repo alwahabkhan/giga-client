@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { BedDouble, Building2, CalendarDays, ChevronLeft, MapPin } from "lucide-react";
+import { BedDouble, Building2, CalendarDays, ChevronLeft, MapPin, X } from "lucide-react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { BottomNav, Card, PrimaryButton, Row, SectionTitle } from "@/components/app/ui";
+import { Dialog, DialogClose, DialogOverlay, DialogPortal, DialogTitle } from "@/components/ui/dialog";
 import { pkr, projects } from "@/lib/data";
 import { seo } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -18,6 +21,7 @@ export const Route = createFileRoute("/projects/$id")({
 function ProjectDetail() {
   const p = Route.useLoaderData();
   const navigate = useNavigate();
+  const [photo, setPhoto] = useState<string | null>(null);
   const pct = Math.round((p.paid / p.total) * 100);
   return (
     <div className="pb-safe-nav min-h-screen">
@@ -58,10 +62,16 @@ function ProjectDetail() {
             <div className="h-full bg-gold" style={{ width: `${p.update.progress}%` }} />
           </div>
           <div className="grid grid-cols-3 gap-2 px-4 pb-4 pt-3">
-            {p.update.images.map((src) => (
-              <div key={src} className="aspect-[4/5] overflow-hidden rounded-xl">
+            {p.update.images.map((src, index) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => setPhoto(src)}
+                aria-label={`View project photo ${index + 1}`}
+                className="aspect-[4/5] w-full overflow-hidden rounded-xl p-0"
+              >
                 <img src={src} alt="" className="h-full w-full object-cover object-center" />
-              </div>
+              </button>
             ))}
           </div>
         </Card>
@@ -85,6 +95,23 @@ function ProjectDetail() {
         </div>
         <Link to="/query" className="mt-4 block text-center text-[13px] font-semibold text-accent-foreground">Have a question about this project?</Link>
       </div>
+      <Dialog open={photo !== null} onOpenChange={(open) => !open && setPhoto(null)}>
+        <DialogPortal>
+          <DialogOverlay />
+          <DialogPrimitive.Content
+            aria-describedby={undefined}
+            className="fixed inset-0 z-50 flex items-center justify-center p-6 outline-none"
+            onClick={() => setPhoto(null)}
+          >
+            <DialogTitle className="sr-only">Project photo</DialogTitle>
+            {photo && <img src={photo} alt="Project update" className="max-h-[78vh] w-full rounded-2xl object-contain" />}
+            <DialogClose className="absolute right-4 top-[max(env(safe-area-inset-top),16px)] grid h-10 w-10 place-items-center rounded-full bg-white text-primary shadow-float">
+              <X className="h-5 w-5" />
+              <span className="sr-only">Close</span>
+            </DialogClose>
+          </DialogPrimitive.Content>
+        </DialogPortal>
+      </Dialog>
       <BottomNav />
     </div>
   );
