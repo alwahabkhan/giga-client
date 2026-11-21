@@ -96,7 +96,7 @@ function Home() {
             { to: "/query", l: "Query", i: MessageSquarePlus },
           ].map(({ to, l, i: I }) => (
             <Link key={to} to={to} className="flex flex-col items-center gap-2 rounded-2xl bg-primary px-1 py-3.5 text-white shadow-card transition active:scale-95">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-[oklch(0.72_0.13_82)] ring-1 ring-[oklch(0.72_0.13_82)]/55">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-gold ring-1 ring-gold/40">
                 <I className="h-[18px] w-[18px]" />
               </span>
               <span className="text-center text-[11px] font-semibold leading-tight text-white">{l}</span>
