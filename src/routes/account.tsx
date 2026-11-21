@@ -28,11 +28,13 @@ function Account() {
     <TabScreen title="My Account" subtitle={`${p.name} · ${p.ref}`}>
       <div className="bg-navy-gradient rounded-2xl p-5 text-primary-foreground shadow-float">
         <div className="flex items-center gap-4">
-          <svg viewBox="0 0 80 80" className="h-20 w-20 shrink-0 -rotate-90">
-            <circle cx="40" cy="40" r={r} fill="none" strokeWidth="7" className="stroke-primary-foreground/15" />
-            <circle cx="40" cy="40" r={r} fill="none" strokeWidth="7" strokeLinecap="round" className="stroke-teal" strokeDasharray={c} strokeDashoffset={c - (c * pct) / 100} />
-            <text x="40" y="44" textAnchor="middle" className="rotate-90 fill-primary-foreground text-[15px] font-bold" transform="rotate(90 40 40)">{pct}%</text>
-          </svg>
+          <div className="relative h-20 w-20 shrink-0">
+            <svg viewBox="0 0 80 80" className="h-20 w-20 -rotate-90">
+              <circle cx="40" cy="40" r={r} fill="none" strokeWidth="7" className="stroke-primary-foreground/15" />
+              <circle cx="40" cy="40" r={r} fill="none" strokeWidth="7" strokeLinecap="round" className="stroke-teal" strokeDasharray={c} strokeDashoffset={c - (c * pct) / 100} />
+            </svg>
+            <span className="absolute inset-0 grid place-items-center text-[15px] font-bold">{pct}%</span>
+          </div>
           <div>
             <p className="text-[12px] text-primary-foreground/65">Total Investment</p>
             <p className="font-display text-[22px] font-semibold">{pkr(p.total)}</p>
