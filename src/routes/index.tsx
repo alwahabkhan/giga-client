@@ -39,7 +39,7 @@ function Splash() {
         <img src={logo} alt="Giga Group" className="animate-giga-logo relative z-10 h-[148px] w-[248px] object-cover object-center mix-blend-screen" />
         <div className="animate-giga-line mt-8 h-px w-14 origin-center bg-gold" style={{ animationDelay: "1.05s" }} />
         <p className="animate-giga-rise mt-4 max-w-[250px] text-center text-[12.5px] leading-relaxed tracking-[0.045em] text-white/75" style={{ animationDelay: "1.2s" }}>
-          Your Investment. Your Information. Complete Transparency.
+          Delivering Excellence Since 1956
         </p>
       </div>
 
