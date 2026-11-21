@@ -15,10 +15,12 @@ function Welcome() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/85" />
 
       <div className="relative flex min-h-screen flex-col px-6 pb-[max(env(safe-area-inset-bottom),28px)] pt-[max(env(safe-area-inset-top),22px)]">
-        <img src={logo} alt="Giga Group" className="-ml-6 h-[168px] w-[210px] object-contain mix-blend-screen" />
+        <div className="flex flex-1 justify-center pt-2">
+          <img src={logo} alt="Giga Group" className="h-[168px] w-[210px] object-contain mix-blend-screen" />
+        </div>
 
         <div className="mt-auto">
-          <h1 className="max-w-[320px] font-display text-[34px] font-semibold leading-[1.05]">Welcome to Giga Group</h1>
+          <h1 className="max-w-[320px] font-display text-[34px] font-semibold leading-[1.05] text-gold">Welcome to Giga Group</h1>
           <p className="mt-3 max-w-[320px] text-[14.5px] leading-relaxed text-white/80">
             Your investment. Your information. Complete transparency — payments, approvals and requests in one place.
           </p>

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, CalendarClock, CheckCircle2, FileText, MapPin, MessageSquarePlus, MessagesSquare, Receipt, Wallet, Workflow } from "lucide-react";
-import { BellButton, BottomNav, Card, Logo, SectionTitle } from "@/components/app/ui";
+import logo from "@/assets/logo-gold.png";
+import { BellButton, BottomNav, Card, SectionTitle } from "@/components/app/ui";
 import { activity, installments, pkr, projects } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { seo } from "@/lib/seo";
@@ -10,11 +11,6 @@ export const Route = createFileRoute("/home")({
   head: () => seo("Home", "Your Giga Group investment overview at a glance."),
   component: Home,
 });
-
-function greeting() {
-  const h = new Date().getHours();
-  return h < 12 ? "Good Morning" : h < 17 ? "Good Afternoon" : "Good Evening";
-}
 
 function Home() {
   const { profile } = useStore();
@@ -31,7 +27,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/30 to-background" />
         <div className="relative px-5 pt-[max(env(safe-area-inset-top),18px)]">
           <div className="flex items-center justify-between">
-            <Logo light />
+            <img src={logo} alt="Giga Group" className="-ml-3 h-[76px] w-[100px] object-cover object-center mix-blend-screen" />
             <div className="flex items-center gap-2">
               <BellButton light />
               <Link
@@ -43,8 +39,7 @@ function Home() {
               </Link>
             </div>
           </div>
-          <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">Client portfolio</p>
-          <p className="mt-2 text-[13px] text-white/70">{greeting()},</p>
+          <p className="mt-3 text-[13px] text-white/70">Welcome back</p>
           <h1 className="font-display text-[34px] font-semibold leading-none text-white">{profile.name.split(" ")[0]}</h1>
           <p className="mt-2 flex items-center gap-1.5 text-[13px] text-white/75">
             <MapPin className="h-3.5 w-3.5 text-gold" />

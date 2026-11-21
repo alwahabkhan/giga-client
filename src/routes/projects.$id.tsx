@@ -57,9 +57,11 @@ function ProjectDetail() {
           <div className="mx-4 mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
             <div className="h-full bg-gold" style={{ width: `${p.update.progress}%` }} />
           </div>
-          <div className="no-scrollbar flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-4 pt-3">
+          <div className="grid grid-cols-3 gap-2 px-4 pb-4 pt-3">
             {p.update.images.map((src) => (
-              <img key={src} src={src} alt="" className="h-40 w-32 shrink-0 snap-start rounded-xl object-cover" />
+              <div key={src} className="aspect-[4/5] overflow-hidden rounded-xl">
+                <img src={src} alt="" className="h-full w-full object-cover object-center" />
+              </div>
             ))}
           </div>
         </Card>

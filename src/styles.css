@@ -186,6 +186,14 @@
   0%, 28% { opacity: 0; }
   55%, 100% { opacity: 1; }
 }
+@keyframes giga-logo {
+  from { opacity: 0; transform: scale(0.78); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes giga-ring {
+  from { opacity: 0; transform: scale(0.62); }
+  to { opacity: 1; transform: scale(1); }
+}
 
 @utility animate-giga-spin {
   animation: giga-spin 8s linear infinite;
@@ -216,4 +224,10 @@
 }
 @utility animate-giga-cross {
   animation: giga-cross 3.2s ease forwards;
+}
+@utility animate-giga-logo {
+  animation: giga-logo 1.05s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@utility animate-giga-ring {
+  animation: giga-ring 1.15s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
