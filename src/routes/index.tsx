@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import mallLogo from "@/assets/logo-mall.png";
+import logo from "@/assets/logo-gold.png";
 import mall from "@/assets/photo-mall-bridge.jpg";
 import skyline from "@/assets/photo-towers.jpg";
 import { seo } from "@/lib/seo";
@@ -36,7 +36,7 @@ function Splash() {
         <div className="pointer-events-none absolute left-1/2 top-[28%] -translate-x-1/2 -translate-y-1/2">
           <div className="animate-giga-bloom h-28 w-28 rounded-full bg-gold/40 blur-3xl" />
         </div>
-        <img src={mallLogo} alt="Giga Mall" className="animate-giga-logo relative z-10 h-auto w-[232px] object-contain mix-blend-screen" />
+        <img src={logo} alt="Giga Group" className="animate-giga-logo relative z-10 h-[148px] w-[248px] object-cover object-center mix-blend-screen" />
         <div className="animate-giga-line mt-8 h-px w-14 origin-center bg-gold" style={{ animationDelay: "1.05s" }} />
         <p className="animate-giga-rise mt-4 max-w-[250px] text-center text-[12.5px] leading-relaxed tracking-[0.045em] text-white/75" style={{ animationDelay: "1.2s" }}>
           Your Investment. Your Information. Complete Transparency.
