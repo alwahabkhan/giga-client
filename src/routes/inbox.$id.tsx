@@ -19,7 +19,11 @@ function Conversation() {
   const [att, setAtt] = useState<string>();
   const fileRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [q?.messages.length]);
+  useEffect(() => {
+    const node = endRef.current;
+    const scroller = node?.parentElement;
+    if (scroller) scroller.scrollTop = scroller.scrollHeight;
+  }, [q?.messages.length]);
 
   if (!q)
     return (
