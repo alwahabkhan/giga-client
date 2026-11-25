@@ -3,7 +3,8 @@ import { ChevronRight, Download, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { Logo, PrimaryButton, StatusBadge, SubScreen } from "@/components/app/ui";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { client, pkr, receipts } from "@/lib/data";
+import { client, pkr } from "@/lib/data";
+import { formatDue, receipts } from "@/lib/portfolio";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/receipts")({
@@ -15,19 +16,21 @@ export const Route = createFileRoute("/receipts")({
 function Receipts() {
   const { open } = Route.useSearch();
   const navigate = useNavigate({ from: "/receipts" });
-  const sel = receipts.find((r) => r.receipt === open);
+  const records = receipts();
+  const sel = records.find((record) => record.installment.receipt === open);
 
   return (
-    <SubScreen title="Payment receipts" subtitle={`${receipts.length} receipts on file`}>
+    <SubScreen title="Payment receipts" subtitle={`${records.length} receipts on file`}>
       <div className="mt-2 space-y-2.5">
-        {receipts.map((r) => (
-          <button key={r.receipt} onClick={() => navigate({ search: { open: r.receipt } })} className="flex w-full items-center gap-3 rounded-2xl bg-card p-4 text-left shadow-card">
+        {records.map(({ project, unit, installment }) => (
+          <button key={installment.receipt} onClick={() => navigate({ search: { open: installment.receipt } })} className="flex w-full items-center gap-3 rounded-2xl bg-card p-4 text-left shadow-card">
             <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-accent-foreground"><FileText className="h-5 w-5" /></span>
             <div className="min-w-0 flex-1">
-              <p className="font-mono text-[13px] font-semibold text-primary">{r.receipt}</p>
-              <p className="text-[11.5px] text-muted-foreground">Installment {r.id} · {r.paidOn} · {pkr(r.amount)}</p>
+              <p className="font-mono text-[13px] font-semibold text-primary">{installment.receipt}</p>
+              <p className="text-[11.5px] text-muted-foreground">Unit {unit.number} · {project.name}</p>
+              <p className="text-[11.5px] text-muted-foreground">Installment {String(installment.no).padStart(2, "0")} · {installment.paidOn ? formatDue(installment.paidOn) : "—"} · {pkr(installment.paidAmount)}</p>
             </div>
-            <StatusBadge status={r.verification} />
+            <StatusBadge status={installment.verification} />
             <ChevronRight className="h-4 w-4 text-muted-foreground" />
           </button>
         ))}
@@ -45,11 +48,12 @@ function Receipts() {
                 </div>
                 <div className="space-y-2 py-4 text-[12.5px]">
                   {[
-                    ["Receipt No.", sel.receipt],
+                    ["Receipt No.", sel.installment.receipt],
                     ["Client", client.name],
-                    ["Account", client.accountRef],
-                    ["Installment", sel.id],
-                    ["Submitted", sel.paidOn],
+                    ["Unit", `${sel.unit.number} · ${sel.project.name}`],
+                    ["Booking", sel.unit.bookingRef],
+                    ["Installment", String(sel.installment.no).padStart(2, "0")],
+                    ["Submitted", sel.installment.paidOn ? formatDue(sel.installment.paidOn) : "—"],
                     ["Channel", "Bank transfer"],
                   ].map(([k, v]) => (
                     <div key={k} className="flex justify-between"><span className="text-muted-foreground">{k}</span><span className="font-semibold text-foreground">{v}</span></div>
@@ -57,9 +61,9 @@ function Receipts() {
                 </div>
                 <div className="flex items-center justify-between border-t border-dashed pt-4">
                   <span className="text-[12px] text-muted-foreground">Amount</span>
-                  <span className="font-display text-[20px] font-semibold text-primary">{pkr(sel.amount)}</span>
+                  <span className="font-display text-[20px] font-semibold text-primary">{pkr(sel.installment.paidAmount)}</span>
                 </div>
-                <div className="mt-3 flex justify-center"><StatusBadge status={sel.verification} /></div>
+                <div className="mt-3 flex justify-center"><StatusBadge status={sel.installment.verification} /></div>
               </div>
               <div className="p-4">
                 <PrimaryButton variant="navy" onClick={() => toast.success("Receipt saved (demo)")}><Download className="h-4 w-4" /> Save copy</PrimaryButton>

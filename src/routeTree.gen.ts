@@ -31,6 +31,7 @@ import { Route as ProfileIndexRouteImport } from './routes/profile.index'
 import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsIdRouteImport } from './routes/projects.$id'
+import { Route as UnitsUnitIdRouteImport } from './routes/units.$unitId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -142,6 +143,11 @@ const ProjectsIdRoute = ProjectsIdRouteImport.update({
   path: '/projects/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UnitsUnitIdRoute = UnitsUnitIdRouteImport.update({
+  id: '/units/$unitId',
+  path: '/units/$unitId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -162,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/installment/$id': typeof InstallmentIdRoute
   '/profile/edit': typeof ProfileEditRoute
   '/projects/$id': typeof ProjectsIdRoute
+  '/units/$unitId': typeof UnitsUnitIdRoute
   '/approvals/': typeof ApprovalsIndexRoute
   '/inbox/': typeof InboxIndexRoute
   '/profile/': typeof ProfileIndexRoute
@@ -186,6 +193,7 @@ export interface FileRoutesByTo {
   '/installment/$id': typeof InstallmentIdRoute
   '/profile/edit': typeof ProfileEditRoute
   '/projects/$id': typeof ProjectsIdRoute
+  '/units/$unitId': typeof UnitsUnitIdRoute
   '/approvals': typeof ApprovalsIndexRoute
   '/inbox': typeof InboxIndexRoute
   '/profile': typeof ProfileIndexRoute
@@ -211,6 +219,7 @@ export interface FileRoutesById {
   '/installment/$id': typeof InstallmentIdRoute
   '/profile/edit': typeof ProfileEditRoute
   '/projects/$id': typeof ProjectsIdRoute
+  '/units/$unitId': typeof UnitsUnitIdRoute
   '/approvals/': typeof ApprovalsIndexRoute
   '/inbox/': typeof InboxIndexRoute
   '/profile/': typeof ProfileIndexRoute
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/installment/$id'
     | '/profile/edit'
     | '/projects/$id'
+    | '/units/$unitId'
     | '/approvals/'
     | '/inbox/'
     | '/profile/'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
     | '/installment/$id'
     | '/profile/edit'
     | '/projects/$id'
+    | '/units/$unitId'
     | '/approvals'
     | '/inbox'
     | '/profile'
@@ -285,6 +296,7 @@ export interface FileRouteTypes {
     | '/installment/$id'
     | '/profile/edit'
     | '/projects/$id'
+    | '/units/$unitId'
     | '/approvals/'
     | '/inbox/'
     | '/profile/'
@@ -310,6 +322,7 @@ export interface RootRouteChildren {
   InstallmentIdRoute: typeof InstallmentIdRoute
   ProfileEditRoute: typeof ProfileEditRoute
   ProjectsIdRoute: typeof ProjectsIdRoute
+  UnitsUnitIdRoute: typeof UnitsUnitIdRoute
   ApprovalsIndexRoute: typeof ApprovalsIndexRoute
   InboxIndexRoute: typeof InboxIndexRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
@@ -472,6 +485,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/units/$unitId': {
+      id: '/units/$unitId'
+      path: '/units/$unitId'
+      fullPath: '/units/$unitId'
+      preLoaderRoute: typeof UnitsUnitIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -494,6 +514,7 @@ const rootRouteChildren: RootRouteChildren = {
   InstallmentIdRoute: InstallmentIdRoute,
   ProfileEditRoute: ProfileEditRoute,
   ProjectsIdRoute: ProjectsIdRoute,
+  UnitsUnitIdRoute: UnitsUnitIdRoute,
   ApprovalsIndexRoute: ApprovalsIndexRoute,
   InboxIndexRoute: InboxIndexRoute,
   ProfileIndexRoute: ProfileIndexRoute,

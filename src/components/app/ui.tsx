@@ -21,7 +21,7 @@ export function Logo({ className, light }: { className?: string; light?: boolean
 }
 
 const tabs: { to: string; label: string; icon: LucideIcon; match: string[] }[] = [
-  { to: "/home", label: "Home", icon: Home, match: ["/home", "/projects"] },
+  { to: "/home", label: "Home", icon: Home, match: ["/home", "/projects", "/units"] },
   { to: "/account", label: "Account", icon: Wallet, match: ["/account", "/installment", "/statement", "/receipts"] },
   { to: "/approvals", label: "Approvals", icon: Workflow, match: ["/approvals"] },
   { to: "/query", label: "Query", icon: MessageSquarePlus, match: ["/query"] },
@@ -144,6 +144,8 @@ const tones: Record<string, string> = {
   "Awaiting Response": "bg-warning/15 text-warning",
   "Under Review": "bg-warning/15 text-warning",
   Upcoming: "bg-info/12 text-info",
+  Due: "bg-gold/25 text-gold-deep",
+  "Partially Paid": "bg-warning/15 text-warning",
   "In Progress": "bg-info/12 text-info",
   New: "bg-teal/15 text-accent-foreground",
   Overdue: "bg-destructive/12 text-destructive",
